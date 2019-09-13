@@ -1,0 +1,7 @@
+docker run --rm \
+  -e INFLUXDB_DB=jenkins -e INFLUXDB_ADMIN_ENABLED=true \
+  -e INFLUXDB_ADMIN_USER=admin \
+  -e INFLUXDB_ADMIN_PASSWORD=admin \
+  -e INFLUXDB_USER=jenkins -e INFLUXDB_USER_PASSWORD=jenkins \
+  -v influxdb-volume:/var/lib/influxdb \
+  influxdb /init-influxdb.sh
