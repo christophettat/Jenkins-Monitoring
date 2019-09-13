@@ -1,0 +1,15 @@
+node('master') {
+    stage ('dummy stage') {
+        echo "getting intial config"
+        git url: 'ssh://git@bitbucket.swift.com:7999/~cbolle/pipeline-visualisation.git', credentialsId: '034ebb77-1f6e-4d4b-a94f-ad5900b21a9b'
+        //saving scripts for later re-use in a next step
+        sleep 10
+    } 
+    stage ('junit'){
+        sh "robot --outputdir ./Results --xunit ./Results/out.xml ./TestCases"
+        junit '**/Results/xout.xml'
+    }
+    stage ('Robot'){
+        sleep 5
+    }
+}
